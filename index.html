@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Amigurumis Artesanais</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: 'Quicksand', sans-serif; }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+    }
 
     @keyframes dots {
-      0% { content: ''; }
-      33% { content: '.'; }
-      66% { content: '..'; }
-      100% { content: '...'; }
+      0% {
+        content: '';
+      }
+
+      33% {
+        content: '.';
+      }
+
+      66% {
+        content: '..';
+      }
+
+      100% {
+        content: '...';
+      }
     }
 
     .dots::after {
@@ -27,345 +41,415 @@
 
 <body class="bg-[#faf7f2] text-gray-800">
 
-<!-- INTRO / ANIMAÇÃO -->
-<section id="intro" class="h-screen flex flex-col justify-center items-center text-center">
-  <img src="images/tricotando.gif" class="w-64 mb-6">
-  <h2 class="text-4xl font-semibold mb-2">Tricotando</h2>
-  <p class="text-gray-600 text-lg dots"></p>
-</section>
+  <!-- INTRO / ANIMAÇÃO -->
+  <section id="intro" class="h-screen flex flex-col justify-center items-center text-center">
+    <img src="images/tricotando.gif" class="w-64 mb-6">
+    <h2 class="text-4xl font-semibold mb-2">Tricotando</h2>
+    <p class="text-gray-600 text-lg dots"></p>
+  </section>
 
-<!-- HEADER -->
+  <!-- HEADER -->
 <header class="bg-white shadow fixed w-full z-50 hidden" id="menu">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <h1 class="text-2xl font-semibold">🧶 Amigurumis</h1>
-    <nav class="space-x-6">
+
+    <!-- BOTÃO MOBILE -->
+    <button class="sm:hidden text-2xl" onclick="toggleMenu()">☰</button>
+
+    <!-- MENU DESKTOP -->
+    <nav class="hidden sm:flex space-x-6">
       <button onclick="mostrar('inicio')" class="hover:text-pink-500">Início</button>
       <button onclick="mostrar('produtos')" class="hover:text-pink-500">Produtos</button>
       <button onclick="mostrar('carrinho')" class="hover:text-pink-500">Carrinho</button>
     </nav>
   </div>
+
+  <!-- MENU MOBILE -->
+  <div id="menuMobile" class="sm:hidden hidden bg-white px-6 pb-4 space-y-2">
+    <button onclick="mostrar('inicio')" class="block w-full text-left">Início</button>
+    <button onclick="mostrar('produtos')" class="block w-full text-left">Produtos</button>
+    <button onclick="mostrar('carrinho')" class="block w-full text-left">Carrinho</button>
+  </div>
 </header>
 
-<!-- INÍCIO -->
-<section id="inicio" class="hidden pt-32 max-w-4xl mx-auto px-6 text-center">
-  <h2 class="text-4xl font-semibold mb-6">A Arte do Amigurumi</h2>
+  <!-- INÍCIO -->
+  <section id="inicio" class="hidden pt-32 max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-semibold mb-6">A Arte do Amigurumi</h2>
 
-  <p class="text-gray-600 leading-relaxed mb-6">
-    O amigurumi é uma arte japonesa que transforma linhas e pontos em personagens
-    cheios de carinho e personalidade. Cada peça é feita à mão, ponto por ponto,
-    carregando amor, cuidado e dedicação.
-  </p>
+    <p class="text-gray-600 leading-relaxed mb-6">
+      O amigurumi é uma arte japonesa que transforma linhas e pontos em personagens
+      cheios de carinho e personalidade. Cada peça é feita à mão, ponto por ponto,
+      carregando amor, cuidado e dedicação.
+    </p>
 
-  <p class="text-gray-600 leading-relaxed">
-    Aqui, cada amigurumi nasce com uma história única, pensado para trazer aconchego
-    e alegria para quem recebe.
-  </p>
-</section>
+    <p class="text-gray-600 leading-relaxed">
+      Aqui, cada amigurumi nasce com uma história única, pensado para trazer aconchego
+      e alegria para quem recebe.
+    </p>
+  </section>
 
-<!-- PRODUTOS -->
-<section id="produtos" class="hidden pt-32 max-w-7xl mx-auto px-6">
-  <h2 class="text-4xl font-semibold text-center mb-12">Produtos à Venda</h2>
+  <!-- PRODUTOS -->
+  <section id="produtos" class="hidden pt-32 max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl font-semibold text-center mb-12">Produtos à Venda</h2>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
-    <!-- PRODUTO 2 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/Leebit.jpeg"
-             class="h-full w-full object-cover"
-             alt="Leebit">
+      <!-- PRODUTO 2 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/Leebit.jpeg"
+     class="h-full w-full object-cover cursor-pointer"
+     alt="Leebit"
+     onclick="abrirImagem(this.src)">
+        </div>
+        <h3 class="text-xl font-semibold">Leebit</h3>
+        <p class="text-sm text-gray-600">Mascotinho do Stray Kids.</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 99,90</p>
+        <button onclick="addCarrinho('Leebit', 99.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Leebit</h3>
-      <p class="text-sm text-gray-600">Mascotinho do Stray Kids.</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 99,90</p>
-      <button onclick="addCarrinho('Leebit', 99.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-    <!-- PRODUTO 3 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/Han quokka.jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 3 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/Han quokka.jpeg" 
+          class="h-full w-full object-cover cursor-pointer" 
+          alt="Han Quokka"
+          onclick="abrirImagem(this.src)">>
+
+        </div>
+        <h3 class="text-xl font-semibold">Han Quokka</h3>
+        <p class="text-sm text-gray-600">Mascotinho do Stray Kids.</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('Han Quokka', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Han Quokka</h3>
-      <p class="text-sm text-gray-600">Mascotinho do Stray Kids.</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-        <!-- PRODUTO 4 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/Cachorrinho cabeçudo rosa.jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 4 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/Cachorrinho cabeçudo rosa.jpeg" 
+          class="h-full w-full object-cover cursor-pointer" 
+          alt="Cachorrinho cabecudo rosa"
+          onclick="abrirImagem(this.src)">>
+        </div>
+        <h3 class="text-xl font-semibold">Cachorrinho cabeçudo rosa</h3>
+        <p class="text-sm text-gray-600">Cachorrinho cabeçudo rosa.</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('Cachorrinho cabecudo rosa', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Cachorrinho cabeçudo rosa</h3>
-      <p class="text-sm text-gray-600">Cachorrinho cabeçudo rosa.</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-        <!-- PRODUTO 5 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/Tigrinho .jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 5 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/Tigrinho .jpeg" 
+          class="h-full w-full object-cover cursor-pointer" 
+          alt="Tigrinho"
+          onclick="abrirImagem(this.src)">>
+        </div>
+        <h3 class="text-xl font-semibold">Tigrinho</h3>
+        <p class="text-sm text-gray-600">Fio amigurumi 14 cm.</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('Tigrinho', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Tigrinho </h3>
-      <p class="text-sm text-gray-600">Fio amigurumi 14 cm.</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-        <!-- PRODUTO 6 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/Coelhinho jardineiro .jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 6 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/Coelhinho jardineiro .jpeg"
+          class="h-full w-full object-cover cursor-pointer" 
+          alt="Coelhinho jardineiro"
+          onclick="abrirImagem(this.src)">>
+        </div>
+        <h3 class="text-xl font-semibold">Coelhinho jardineiro</h3>
+        <p class="text-sm text-gray-600">Fio amigurumi 18 cm.</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('Coelhinho jardineiro', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Coelhinho jardineiro</h3>
-      <p class="text-sm text-gray-600">Fio amigurumi 18 cm.</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-        <!-- PRODUTO 7 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/Ursos.jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 7 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/Ursos.jpeg"
+          class="h-full w-full object-cover cursor-pointer"
+          alt="Ursos sem curso Polar, pardo e panda"
+          onclick="abrirImagem(this.src)">>
+        </div>
+        <h3 class="text-xl font-semibold">Ursos sem curso Polar, pardo e panda</h3>
+        <p class="text-sm text-gray-600">Ursos sem curso Polar, pardo e panda Fio amigurumi pelucia 18 cm.</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('Ursos sem curso Polar, pardo e panda', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Ursos sem curso Polar, pardo e panda</h3>
-      <p class="text-sm text-gray-600">Ursos sem curso Polar, pardo e panda Fio amigurumi pelucia 18 cm.</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-        <!-- PRODUTO 8 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/Baby tata.jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 8 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/Baby tata.jpeg"
+          class="h-full w-full object-cover cursor-pointer"
+          alt="Baby tata - BT21"
+          onclick="abrirImagem(this.src)">>
+        </div>
+        <h3 class="text-xl font-semibold">Baby tata - BT21</h3>
+        <p class="text-sm text-gray-600">Fio amigurumi 14 cm.</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('Baby tata - BT21', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Baby tata - BT21</h3>
-      <p class="text-sm text-gray-600">Fio amigurumi 14 cm.</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-        <!-- PRODUTO 9 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/Cachorrinho cabeçudo rosa.jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 9 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/Cachorrinho cabeçudo rosa.jpeg"
+          class="h-full w-full object-cover cursor-pointer"
+          alt="Baby shooky"
+          onclick="abrirImagem(this.src)">>
+        </div>
+        <h3 class="text-xl font-semibold">Baby shooky</h3>
+        <p class="text-sm text-gray-600">Fio amigurumi 8 cm</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('Baby shooky', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Baby shooky </h3>
-      <p class="text-sm text-gray-600">Fio amigurumi 8 cm</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-        <!-- PRODUTO 10 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/a.jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 10 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/a.jpeg"
+          class="h-full w-full object-cover cursor-pointer"
+          alt="Baby Cooky"
+          onclick="abrirImagem(this.src)">>
+        </div>
+        <h3 class="text-xl font-semibold">Baby Cooky</h3>
+        <p class="text-sm text-gray-600">Fio amigurumi 17 cm</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('Baby Cooky', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Baby cooky</h3>
-      <p class="text-sm text-gray-600">Fio amigurumi 17 cm</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-            <!-- PRODUTO 11 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/Baby Koya.jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 11 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/Baby Koya.jpeg"
+          class="h-full w-full object-cover cursor-pointer"
+          alt="Baby Koya"
+          onclick="abrirImagem(this.src)">>
+        </div>
+        <h3 class="text-xl font-semibold">Baby Koya</h3>
+        <p class="text-sm text-gray-600">Fio amigurumi 16 cm</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('Baby Koya', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Baby Koya </h3>
-      <p class="text-sm text-gray-600">Fio amigurumi 16 cm</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-            <!-- PRODUTO 12 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/RJ Baby.jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 12 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/RJ Baby.jpeg"
+          class="h-full w-full object-cover cursor-pointer"
+          alt="RJ Baby"
+          onclick="abrirImagem(this.src)">>
+        </div>
+        <h3 class="text-xl font-semibold">RJ Baby</h3>
+        <p class="text-sm text-gray-600">Fio amigurumi 14 cm</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('RJ Baby', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">RJ Baby </h3>
-      <p class="text-sm text-gray-600">Fio amigurumi 14 cm</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-            <!-- PRODUTO 13 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/Baby chimmy.jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 13 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/Baby chimmy.jpeg"
+          class="h-full w-full object-cover cursor-pointer"
+          alt="Baby Chimmy"
+          onclick="abrirImagem(this.src)">>
+        </div>
+        <h3 class="text-xl font-semibold">Baby Chimmy</h3>
+        <p class="text-sm text-gray-600">Fio amigurumi 14 cm</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('Baby Chimmy', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Baby chimmy</h3>
-      <p class="text-sm text-gray-600">Fio amigurumi 14 cm</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
-    </div>
 
-            <!-- PRODUTO 14 -->
-    <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-      <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
-        <img src="images/Calopsita.jpeg"
-             class="h-full w-full object-cover"
-             alt="Han Quokka">
+      <!-- PRODUTO 14 -->
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="h-64 w-full overflow-hidden rounded-xl mb-4">
+          <img src="images/Calopsita.jpeg"
+          class="h-full w-full object-cover cursor-pointer" 
+          alt="Calopsita"
+          onclick="abrirImagem(this.src)">>
+        </div>
+        <h3 class="text-xl font-semibold">Calopsita</h3>
+        <p class="text-sm text-gray-600">Fio amigurumi 12 cm e 16cm</p>
+        <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
+        <button onclick="addCarrinho('Calopsita', 79.90)"
+          class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
+          Comprar
+        </button>
       </div>
-      <h3 class="text-xl font-semibold">Calopsita</h3>
-      <p class="text-sm text-gray-600">Fio amigurumi 12 cm e 16cm</p>
-      <p class="mt-2 font-semibold text-pink-600">R$ 79,90</p>
-      <button onclick="addCarrinho('Han Quokka', 79.90)"
-        class="mt-4 w-full bg-pink-500 text-white py-2 rounded-xl hover:bg-pink-600">
-        Comprar
-      </button>
+
+
+
     </div>
+  </section>
 
 
+  <!-- CARRINHO -->
+  <section id="carrinho" class="hidden pt-32 max-w-4xl mx-auto px-6">
+    <h2 class="text-4xl font-semibold text-center mb-8">Carrinho</h2>
 
-  </div>
-</section>
+    <ul id="listaCarrinho" class="bg-white rounded-xl shadow p-6 mb-6 space-y-4"></ul>
+
+    <p id="total" class="text-xl font-semibold text-right mb-6"></p>
+
+    <button onclick="finalizarWhatsApp()" class="w-full bg-green-500 text-white py-3 rounded-xl hover:bg-green-600">
+      Finalizar pelo WhatsApp
+    </button>
+  </section>
+
+  <!-- JS -->
+  <script>
+    let carrinho = [];
+
+    setTimeout(() => {
+      document.getElementById("intro").classList.add("hidden");
+      document.getElementById("inicio").classList.remove("hidden");
+      document.getElementById("menu").classList.remove("hidden");
+    }, 3500);
+
+    function mostrar(secao) {
+      document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+      document.getElementById(secao).classList.remove('hidden');
+
+      if (secao === 'carrinho') {
+        renderCarrinho();
+      }
+    }
+
+    function addCarrinho(nome, preco) {
+      carrinho.push({ nome, preco });
+      alert("Produto adicionado ao carrinho!");
+    }
+
+function renderCarrinho() {
+  const lista = document.getElementById("listaCarrinho");
+  const totalEl = document.getElementById("total");
+
+  lista.innerHTML = "";
+  let total = 0;
+
+  carrinho.forEach((item, index) => {
+    total += item.preco;
+
+    const li = document.createElement("li");
+    li.className = "flex justify-between items-center border-b pb-2";
+
+    li.innerHTML = `
+      <span>${item.nome}</span>
+      <div class="flex gap-4 items-center">
+        <span>R$ ${item.preco.toFixed(2)}</span>
+        <button onclick="removerItem(${index})" class="text-red-500 text-sm">
+          Remover
+        </button>
+      </div>
+    `;
+
+    lista.appendChild(li);
+  });
+
+  totalEl.textContent = `Total: R$ ${total.toFixed(2)}`;
+}
 
 
-<!-- CARRINHO -->
-<section id="carrinho" class="hidden pt-32 max-w-4xl mx-auto px-6">
-  <h2 class="text-4xl font-semibold text-center mb-8">Carrinho</h2>
+    function finalizarWhatsApp() {
+      if (carrinho.length === 0) {
+        alert("Carrinho vazio!");
+        return;
+      }
 
-  <ul id="listaCarrinho" class="bg-white rounded-xl shadow p-6 mb-6 space-y-4"></ul>
+      let mensagem = "Olá! Gostaria de comprar:%0A";
+      let total = 0;
 
-  <p id="total" class="text-xl font-semibold text-right mb-6"></p>
+      carrinho.forEach(item => {
+        mensagem += `- ${item.nome} (R$ ${item.preco.toFixed(2)})%0A`;
+        total += item.preco;
+      });
 
-  <button onclick="finalizarWhatsApp()"
-    class="w-full bg-green-500 text-white py-3 rounded-xl hover:bg-green-600">
-    Finalizar pelo WhatsApp
-  </button>
-</section>
+      mensagem += `%0ATotal: R$ ${total.toFixed(2)}`;
 
-<!-- JS -->
-<script>
-  let carrinho = [];
+      let telefone = "554399149521";
 
-  setTimeout(() => {
-    document.getElementById("intro").classList.add("hidden");
-    document.getElementById("inicio").classList.remove("hidden");
-    document.getElementById("menu").classList.remove("hidden");
-  }, 3500);
+      window.open(`https://wa.me/${554399149521}?text=${mensagem}`, "_blank");
+    }
 
-  function mostrar(secao) {
-    document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
-    document.getElementById(secao).classList.remove('hidden');
-
-    if (secao === 'carrinho') {
+    function removerItem(index) {
+      carrinho.splice(index, 1);
       renderCarrinho();
     }
-  }
 
-  function addCarrinho(nome, preco) {
-    carrinho.push({ nome, preco });
-    alert("Produto adicionado ao carrinho!");
-  }
+function toggleMenu() {
+  document.getElementById("menuMobile").classList.toggle("hidden");
+}
 
-  function renderCarrinho() {
-    const lista = document.getElementById("listaCarrinho");
-    const totalEl = document.getElementById("total");
+function abrirImagem(src) {
+  const modal = document.getElementById("modalImagem");
+  const img = document.getElementById("imagemModal");
+  img.src = src;
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+}
 
-    lista.innerHTML = "";
-    let total = 0;
+function fecharModal() {
+  const modal = document.getElementById("modalImagem");
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+}
 
-    carrinho.forEach((item, index) => {
-      total += item.preco;
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") fecharModal();
+});
 
-      const li = document.createElement("li");
-      li.className = "flex justify-between border-b pb-2";
 
-      li.innerHTML = `
-        <span>${item.nome}</span>
-        <span>R$ ${item.preco.toFixed(2)}</span>
-      `;
+  </script>
 
-      lista.appendChild(li);
-    });
+<!-- MODAL IMAGEM -->
+<div id="modalImagem"
+     class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50"
+     onclick="fecharModal()">
 
-    totalEl.textContent = `Total: R$ ${total.toFixed(2)}`;
-  }
-
-  function finalizarWhatsApp() {
-    if (carrinho.length === 0) {
-      alert("Carrinho vazio!");
-      return;
-    }
-
-    let mensagem = "Olá! Gostaria de comprar:%0A";
-    let total = 0;
-
-    carrinho.forEach(item => {
-      mensagem += `- ${item.nome} (R$ ${item.preco.toFixed(2)})%0A`;
-      total += item.preco;
-    });
-
-    mensagem += `%0ATotal: R$ ${total.toFixed(2)}`;
-
-    let telefone = "554399149521"; // 🔴 TROQUE PELO SEU NÚMERO
-
-    window.open(`https://wa.me/${554399149521}?text=${mensagem}`, "_blank");
-  }
-</script>
-
+  <img id="imagemModal"
+       class="max-w-[90%] max-h-[90%] rounded-xl"
+       onclick="event.stopPropagation()">
+</div>
 
 </body>
+
 </html>
