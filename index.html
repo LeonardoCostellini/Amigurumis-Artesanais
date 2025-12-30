@@ -70,6 +70,7 @@
       <button onclick="mostrar('inicio')" class="block w-full text-left">Início</button>
       <button onclick="mostrar('produtos')" class="block w-full text-left">Produtos</button>
       <button onclick="mostrar('carrinho')" class="block w-full text-left">Carrinho</button>
+      <button onclick="mostrar('Sobre')" class="hover:text-pink-500">Sobre</button>
     </div>
   </header>
 
@@ -393,7 +394,7 @@
             return;
           }
 
-          let mensagem = "Olá! Gostaria de comprar:%0A";
+          let mensagem = "Olá, gostei desse(s), gostaria de saber quanto tempo para ficar pronto?:%0A";
           let total = 0;
 
           carrinho.forEach(item => {
